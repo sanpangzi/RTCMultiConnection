@@ -754,7 +754,7 @@
                 stream: stream,
                 streamid: streamid,
                 mediaElement: mediaElement,
-                blobURL: mediaElement.mozSrcObject ? URL.createObjectURL(stream) : mediaElement.src,
+                blobURL: mediaElement.mozSrcObject ? mediaElement.srcObject=stream) : mediaElement.src,
                 type: 'local',
                 userid: connection.userid,
                 extra: connection.extra,
@@ -3306,7 +3306,7 @@
         }
 
         // "mozSrcObject" is always preferred over "src"!!
-        mediaElement[isFirefox ? 'mozSrcObject' : 'src'] = isFirefox ? stream : (window.URL || window.webkitURL).createObjectURL(stream);
+        mediaElement[isFirefox ? 'mozSrcObject' : 'src'] = isFirefox ? stream : (mediaElement.srcObject=stream);
 
         mediaElement.controls = true;
         mediaElement.autoplay = !!session.remote;
